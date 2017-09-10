@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom'
 
 class TodoCreate extends Component {
   constructor(props){
+  	console.log("props: ",props);
   	super(props);
-  	if(this.props.propObject){
-  		const itemData = this.props.model.getSingleRecord(this.props.propObject.match.params.id)
+  	if(this.props.match){
+  		const itemData = this.props.model.getSingleRecord(this.props.match.params.id)
   		this.state = {
   			id: itemData.id,
   			title: itemData.title,

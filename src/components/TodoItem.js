@@ -10,10 +10,16 @@ class TodoItem extends Component {
     }
     console.log(this.props.data);
     this.editItem = this.editItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
   editItem(){
     this.setState({
       redirect: '/update/'+this.state.data.id
+    });
+  }
+  deleteItem(){
+    this.setState({
+      redirect: '/delete/'+this.state.data.id
     });
   }
   getDateFromUTC(UTC){
@@ -33,6 +39,7 @@ class TodoItem extends Component {
         <div>Description: <span>{this.props.data.description}</span></div>
         <div>Due: <input type="date" name="bday" defaultValue={this.getDateFromUTC(this.props.data.dueDate)} /></div>
         <div onClick={this.editItem}>Edit</div>
+        <div onClick={this.deleteItem}>Delete</div>
       </div>
     );
   }
