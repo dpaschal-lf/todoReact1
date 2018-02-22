@@ -6,7 +6,6 @@ class TodoModel {
 		this.loadData();
 	}
 	loadData(){
-		console.log('data loaded');
 		if(localStorage.todoData){
 			try{
 				this.data = JSON.parse(localStorage.todoData);
@@ -25,14 +24,13 @@ class TodoModel {
 		return this.data.records;
 	}
 	deleteRecord(id){
-		console.log('deleted:',id);
 		delete this.data.records[id];
 		this.data.count--;
 		this.saveData();
 		return !this.data.records[id];
 	}
 	getSingleRecord(id){
-		if(this.data[id]){
+		if(this.data.records[id]){
 			return this.data.records[id];
 		} else {
 			return false;
@@ -47,7 +45,7 @@ class TodoModel {
 			var dueDate = dataRecord.dueDate;
 		} else {
 			newID = (new Date()).getTime();
-			dueDate = newID+3600*24*7;
+			dueDate = dataRecord.dueDate || newID+3600*24*7;//check if one exists
 		}
 		const recordSet = {
 			title: 'default title',

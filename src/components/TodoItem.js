@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import './todoItem.css';
 
 class TodoItem extends Component {
   constructor(props){
@@ -22,11 +23,12 @@ class TodoItem extends Component {
       redirect: '/delete/'+this.state.data.id
     });
   }
-  getDateFromUTC(UTC){
-  	const date = new Date();
-  	date.setTime(UTC);
-  	return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-  }
+  // getDateFromUTC(UTC){
+  //   console.log("UTC: "+UTC);
+  // 	const date = new Date();
+  // 	date.setTime(UTC);
+  // 	return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  // }
   render() {
     
     if(this.state.redirect){
@@ -34,15 +36,28 @@ class TodoItem extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div>
-        <div>Title: <span>{this.props.data.title}</span></div>
-        <div>Description: <span>{this.props.data.description}</span></div>
-        <div>Due: <input type="date" name="bday" defaultValue={this.getDateFromUTC(this.props.data.dueDate)} /></div>
-        <div onClick={this.editItem}>Edit</div>
-        <div onClick={this.deleteItem}>Delete</div>
+      <div className="todoItem">
+        <div className="dataField prominent"><span>Title:</span>{this.props.data.title}</div>
+        <div className="dataField"><span>Description:</span>{this.props.data.description}</div>
+        <div className="dataField"><span>Due:</span><input type="date" name="bday" defaultValue={this.props.data.dueDate} /></div>
+        <div className="editButton todoButton" onClick={this.editItem}>Edit</div>
+        <div className="deleteButton todoButton" onClick={this.deleteItem}>Delete</div>
       </div>
     );
   }
 }
 
 export default TodoItem;
+
+
+
+
+
+
+
+
+
+
+
+
+

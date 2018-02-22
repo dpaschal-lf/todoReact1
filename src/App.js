@@ -5,7 +5,6 @@ import TodoModel from './components/TodoModel.js';
 import TodoList from './components/TodoList.js';
 import TodoHeader from './components/TodoHeader.js';
 import TodoCreate from './components/TodoCreate.js';
-import TodoConfirm from './components/TodoConfirm.js';
 import TodoDelete from './components/TodoDelete.js';
 var model = new TodoModel();
 window.model = model;

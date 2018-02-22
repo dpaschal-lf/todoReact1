@@ -4,7 +4,6 @@ import TodoItem from './TodoItem.js';
 
 class TodoDelete extends Component {
   constructor(props){
-  	console.log("props: ",props);
   	super(props);
     this.state = {
       redirect: false,
@@ -15,7 +14,6 @@ class TodoDelete extends Component {
     this.cancelDelete = this.cancelDelete.bind(this);
   }
   deleteItem(){
-    console.log("deleting",this.props.match.params.id);
     if(this.props.model.deleteRecord(this.props.match.params.id)){
       this.setState({
         message: 'deleted',
@@ -27,7 +25,6 @@ class TodoDelete extends Component {
         confirm: true
       })       
     }
-
   }
   cancelDelete(){
     this.setState({
